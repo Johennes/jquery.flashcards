@@ -1,5 +1,5 @@
 (function($) {
-  var index = -1;
+  var index = 0;
   
   $(document).ready(function() {
     $('.flashcardContainer').flashcards({
@@ -17,6 +17,8 @@
     $('button[name=turn]').click(function() {
       $('.flashcardContainer').flashcards('turn-card');
     });
+    
+    $('.flashcardContainer').flashcards('switch-card', cards[index]);
   });
   
 })(jQuery);

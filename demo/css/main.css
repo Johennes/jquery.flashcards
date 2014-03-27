@@ -1,11 +1,12 @@
 body {
   background-color: #e27a3f;
+  color: #334d5c;
   /*
-  334D5C
-  45B29D
-  EFC94C
-  E27A3F
-  DF5A49
+  334d5c
+  45b29d
+  efC94c
+  e27a3f
+  df5a49
   */
 }
 
@@ -16,7 +17,7 @@ body {
 
   background-color: #fff;
   border: 0.1em solid #777;
-  box-shadow: 0.2em 0.2em 1em 0 #777;
+  box-shadow: 0 0.2em 1em 0 #777;
 }
 
 .flashcardValue, .flashcardHint {
@@ -25,14 +26,17 @@ body {
 
 .flashcardBody {
   padding: 0.5em;
+  margin: 2em 0;
 }
 
 .flashcardValue {
-  padding-bottom: 0.25em;
+  padding-bottom: 0.5em;
+  font-weight: bold;
 }
 
 .flashcardHint {
-  padding-top: 0.25em;
+  padding-top: 0.5em;
+  font-style: italic;
 }
 
 .flashcardHeader, .flashcardFooter {
@@ -48,4 +52,29 @@ body {
 
 .flashcardFooter {
   border-top: 0.1em solid #df5a49;
+}
+
+.menu {
+  width: 15em;
+  max-width: 90%;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.menu button {
+  width: 5em;
+  padding: 0.25em;
+  background-color: #efC94c;
+  border: 0.2em solid #df5a49;
+  border-radius: 0.2em;
+  outline: none;
+  box-shadow: 0 0.1em 0.2em 0 #777;
+}
+
+.menu button:not(:first-child) {
+  margin-left: 0.5em;
+}
+  
+.menu button:not(:last-child) {
+  margin-right: 0.5em;
 }
