@@ -1,0 +1,51 @@
+body {
+  background-color: #e27a3f;
+  /*
+  334D5C
+  45B29D
+  EFC94C
+  E27A3F
+  DF5A49
+  */
+}
+
+.flashcard {
+  width: 30em;
+  max-width: 90%;
+  margin: 0 auto;
+
+  background-color: #fff;
+  border: 0.1em solid #777;
+  box-shadow: 0.2em 0.2em 1em 0 #777;
+}
+
+.flashcardValue, .flashcardHint {
+  text-align: center;
+}
+
+.flashcardBody {
+  padding: 0.5em;
+}
+
+.flashcardValue {
+  padding-bottom: 0.25em;
+}
+
+.flashcardHint {
+  padding-top: 0.25em;
+}
+
+.flashcardHeader, .flashcardFooter {
+  color: #DF5A49;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 0.5em;
+}
+
+.flashcardHeader {
+  border-bottom: 0.1em solid #df5a49;
+}
+
+.flashcardFooter {
+  border-top: 0.1em solid #df5a49;
+}
