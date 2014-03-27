@@ -1,4 +1,4 @@
-jquery-flashcards
+jquery.flashcards
 =================
 
 A jQuery plugin to display, flip and switch flashcards
