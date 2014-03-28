@@ -1,14 +1,15 @@
 (function($) {
   
   var CLASS = { // CSS classes
-    CARD:  'flashcard',
-    FRONT: 'flashcardFront',
-    BACK:  'flashcardBack',
-    HEAD:  'flashcardHead',
-    FOOT:  'flashcardFoot',
-    BODY:  'flashcardBody',
-    VALUE: 'flashcardValue',
-    HINT:  'flashcardHint'
+    WRAPPER: 'flashcardWrapper',
+    CARD:    'flashcard',
+    FRONT:   'flashcardFront',
+    BACK:    'flashcardBack',
+    HEAD:    'flashcardHead',
+    FOOT:    'flashcardFoot',
+    BODY:    'flashcardBody',
+    VALUE:   'flashcardValue',
+    HINT:    'flashcardHint'
   }
   
   var SIDE = { // Card sides
@@ -34,16 +35,24 @@
   };
   
   function initialize(container, settings) {
-    return container.data('settings', $.extend({
+    container.data('settings', $.extend({
       questionSide:  SIDE.FRONT,
       headGenerator: function(side, value, hint) { return '' },
       footGenerator: function(side, value, hint) { return '' }
     }, settings));
+    
+    var wrapper = $('<div>').addClass(CLASS.WRAPPER);
+    container.append(wrapper);
+    container.data('wrapper', wrapper);
+    
+    return container;
   }
   
   function switchCard(container, data) {
     var settings = container.data('settings');
-    return container.html(createCard(settings, data));
+    var card = createCard(settings, data);
+    container.data('wrapper').html(card);
+    return container;
   }
   
   function createCard(settings, data) {
@@ -102,8 +111,9 @@
   }
   
   function turnCard(container) {
-    container.find('.' + CLASS.FRONT).toggle();
-    container.find('.' + CLASS.BACK).toggle();
+    var wrapper = $(container).data('wrapper');
+    wrapper.find('.' + CLASS.FRONT).toggle();
+    wrapper.find('.' + CLASS.BACK).toggle();
     return container;
   }
  
