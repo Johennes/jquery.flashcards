@@ -10,11 +10,13 @@ body {
   */
 }
 
-.flashcard {
-  width: 30em;
-  max-width: 90%;
+.flashcardContainer {
+  width: 80%;
+  height: 80%;
   margin: 0 auto;
+}
 
+.flashcard {
   background-color: #fff;
   border: 0.1em solid #777;
   box-shadow: 0 0.2em 1em 0 #777;

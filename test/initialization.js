@@ -31,3 +31,11 @@ test('initialization with parameters', function() {
   deepEqual($fixture.data('settings').footGenerator, footGenerator,
     'foot generator initialized with specified parameter');
 });
+
+test('initialization creates wrapper', function() {
+  var $fixture = $('#qunit-fixture');
+  
+  $fixture.flashcards();
+  
+  notEqual($fixture.data('wrapper'), undefined, 'wrapper created correctly');
+});
