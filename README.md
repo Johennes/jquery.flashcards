@@ -18,10 +18,9 @@ $('#container').flashcards({
 None of the options is required. If nothing is supplied, predefined
 defaults are used. Available options include:
 
-* `questionSide = 'front' | 'back'`
-  Side of the card that contains the  question and is displayed first
-  for any new card
-* `headGenerator = function(side, value, hint)`
-  Function for generating the text to be displayed in the card's head
-* `footGenerator = function(side, value, hint)`
-  Function for generating the text to be displayed in the card's foot
+* `questionSide = 'front' | 'back'` - side of the card that contains
+the  question and is displayed first for any new card
+* `headGenerator = function(side, value, hint)` - function for
+generating the text to be displayed in the card's head
+* `footGenerator = function(side, value, hint)` - function for
+generating the text to be displayed in the card's foot
