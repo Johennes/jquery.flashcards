@@ -11,12 +11,17 @@ See the demo live: https://googledrive.com/host/0Bxs8rr1Ng7TqaFZRWEhwdTFUc1E/ind
 
 > $('#container').flashcards({
 >   option1: value1,
->   option2: value2
+>   option2: value2,
+>   ...
 > });
 
-The options argument is optional. If nothing is supplied, predefined
-defaults are used. Options include:
+None of the options is required. If nothing is supplied, predefined
+defaults are used. Available options include:
 
-* questionSide
-* headGenerator
-* footGenerator
+* questionSide = 'front' | 'back'
+  Side of the card that contains the  question and is displayed first
+  for any new card
+* headGenerator = function(side, value, hint)
+  Function for generating the text to be displayed in the card's head
+* footGenerator = function(side, value, hint)
+  Function for generating the text to be displayed in the card's foot
