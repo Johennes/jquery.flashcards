@@ -1,6 +1,6 @@
 (function($) {
   
-  var CLASS = {
+  var CLASS = { // CSS classes
     CARD:  'flashcard',
     FRONT: 'flashcardFront',
     BACK:  'flashcardBack',
@@ -11,7 +11,7 @@
     HINT:  'flashcardHint'
   }
   
-  var SIDE = {
+  var SIDE = { // Card sides
     FRONT: 'front',
     BACK:  'back'
   }
@@ -35,11 +35,9 @@
   
   function initialize(container, settings) {
     return container.data('settings', $.extend({
-      frontHeader:  function(value, hint) { return '' },
-      frontFooter:  function(value, hint) { return '' },
-      backHeader:   function(value, hint) { return '' },
-      backFooter:   function(value, hint) { return '' },
-      questionSide: SIDE.FRONT
+      questionSide:  SIDE.FRONT,
+      headGenerator: function(side, value, hint) { return '' },
+      footGenerator: function(side, value, hint) { return '' }
     }, settings));
   }
   
@@ -57,7 +55,7 @@
     }, data);
 
     var front = createSide(settings, SIDE.FRONT, cardData.frontValue, cardData.frontHint);
-    var back = createSide(settings, SIDE.FRONT, cardData.backValue, cardData.backHint);
+    var back = createSide(settings, SIDE.BACK, cardData.backValue, cardData.backHint);
     var card = $('<div>').addClass(CLASS.CARD);
     card.append(front).append(back);
     
@@ -73,14 +71,14 @@
   function createSide(settings, type, value, hint) {
     var side = $('<div>');
     
-    if (type = SIDE.FRONT) {
+    if (type == SIDE.FRONT) {
       side.addClass(CLASS.FRONT);
     } else {
       side.addClass(CLASS.BACK);
     }
     
     var sideHeader = $('<div>').addClass(CLASS.HEAD).html(
-      evaluatePossibleCallback(settings[type + 'Header'], value, hint));
+      settings.headGenerator(type, value, hint));
     
     var sideBody = $('<div>').addClass(CLASS.BODY);
     var sideValue = $('<div>').addClass(CLASS.VALUE).html(value);
@@ -88,7 +86,7 @@
     sideBody.append(sideValue).append(sideHint);
 
     var sideFooter = $('<div>').addClass(CLASS.FOOT).html(
-      evaluatePossibleCallback(settings[type + 'Footer'], value, hint));
+      settings.footGenerator(type, value, hint));
     
     side.append(sideHeader).append(sideBody).append(sideFooter);
 

@@ -3,10 +3,8 @@
   
   $(document).ready(function() {
     $('.flashcardContainer').flashcards({
-      frontHeader: function(value, hint) { return '#' + (index + 1) + ' - front header' },
-      frontFooter: function(value, hint) { return '#' + (index + 1) + ' - front footer' },
-      backHeader:  function(value, hint) { return '#' + (index + 1) + ' - back header' },
-      backFooter:  function(value, hint) { return '#' + (index + 1) + ' - back footer' }
+      headGenerator: function(side, value, hint) { return '#' + (index + 1) + ' - ' + side + ' head' },
+      footGenerator: function(side, value, hint) { return '#' + (index + 1) + ' - ' + side + ' foot' },
     });
     
     $('button[name=switch]').click(function() {
