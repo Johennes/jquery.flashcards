@@ -1,13 +1,19 @@
-test('initialization creates settings', function() {
+test('initialization with defaults', function() {
   var $fixture = $('#qunit-fixture');
+  
   $fixture.flashcards();
-  notEqual($fixture.data('settings'), null, 'initialized');
+  
+  strictEqual($fixture.data('settings').questionSide, "front",
+    'question side initialized with default value');
 });
 
-test('initialization sets front2back', function() {
+test('initialization with parameters', function() {
   var $fixture = $('#qunit-fixture');
+  
   $fixture.flashcards({
-    front2back: true
+    questionSide: "back"
   });
-  strictEqual($fixture.data('settings').front2back, true, 'initialized');
+  
+  strictEqual($fixture.data('settings').questionSide, "back",
+    'question side initialized with specified parameter');
 });

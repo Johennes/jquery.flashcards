@@ -39,18 +39,18 @@ body {
   font-style: italic;
 }
 
-.flashcardHeader, .flashcardFooter {
+.flashcardHead, .flashcardFoot {
   color: #DF5A49;
   font-weight: bold;
   font-size: 0.8em;
   padding: 0.5em;
 }
 
-.flashcardHeader {
+.flashcardHead {
   border-bottom: 0.1em solid #df5a49;
 }
 
-.flashcardFooter {
+.flashcardFoot {
   border-top: 0.1em solid #df5a49;
 }
 

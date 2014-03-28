@@ -1,13 +1,20 @@
 (function($) {
   
-  var CARD_CLASS   = 'flashcard';
-  var FRONT_CLASS  = 'flashcardFront';
-  var BACK_CLASS   = 'flashcardBack';
-  var HEADER_CLASS = 'flashcardHeader';
-  var FOOTER_CLASS = 'flashcardFooter';
-  var BODY_CLASS   = 'flashcardBody';
-  var VALUE_CLASS  = 'flashcardValue';
-  var HINT_CLASS   = 'flashcardHint';
+  var CLASS = {
+    CARD:  'flashcard',
+    FRONT: 'flashcardFront',
+    BACK:  'flashcardBack',
+    HEAD:  'flashcardHead',
+    FOOT:  'flashcardFoot',
+    BODY:  'flashcardBody',
+    VALUE: 'flashcardValue',
+    HINT:  'flashcardHint'
+  }
+  
+  var SIDE = {
+    FRONT: 'front',
+    BACK:  'back'
+  }
   
   $.fn.flashcards = function(arg1, arg2) {
     switch (typeof arg1) {
@@ -28,11 +35,11 @@
   
   function initialize(container, settings) {
     return container.data('settings', $.extend({
-      frontHeader: function(value, hint) { return '' },
-      frontFooter: function(value, hint) { return '' },
-      backHeader:  function(value, hint) { return '' },
-      backFooter:  function(value, hint) { return '' },
-      front2Back:  true
+      frontHeader:  function(value, hint) { return '' },
+      frontFooter:  function(value, hint) { return '' },
+      backHeader:   function(value, hint) { return '' },
+      backFooter:   function(value, hint) { return '' },
+      questionSide: SIDE.FRONT
     }, settings));
   }
   
@@ -49,12 +56,12 @@
       backHint:   ''
     }, data);
 
-    var front = createSide(settings, 'front', cardData.frontValue, cardData.frontHint);
-    var back = createSide(settings, 'back', cardData.backValue, cardData.backHint);
-    var card = $('<div>').addClass(CARD_CLASS);
+    var front = createSide(settings, SIDE.FRONT, cardData.frontValue, cardData.frontHint);
+    var back = createSide(settings, SIDE.FRONT, cardData.backValue, cardData.backHint);
+    var card = $('<div>').addClass(CLASS.CARD);
     card.append(front).append(back);
     
-    if (settings.front2Back) {
+    if (settings.questionSide = SIDE.FRONT) {
       back.hide();
     } else {
       front.hide();
@@ -64,17 +71,23 @@
   }
 
   function createSide(settings, type, value, hint) {
-    var side = $('<div>').addClass(type === 'front' ? FRONT_CLASS : BACK_CLASS);
+    var side = $('<div>');
     
-    var sideHeader = $('<div>').addClass(HEADER_CLASS).html(
+    if (type = SIDE.FRONT) {
+      side.addClass(CLASS.FRONT);
+    } else {
+      side.addClass(CLASS.BACK);
+    }
+    
+    var sideHeader = $('<div>').addClass(CLASS.HEAD).html(
       evaluatePossibleCallback(settings[type + 'Header'], value, hint));
     
-    var sideBody = $('<div>').addClass(BODY_CLASS);
-    var sideValue = $('<div>').addClass(VALUE_CLASS).html(value);
-    var sideHint = $('<div>').addClass(HINT_CLASS).html(hint);
+    var sideBody = $('<div>').addClass(CLASS.BODY);
+    var sideValue = $('<div>').addClass(CLASS.VALUE).html(value);
+    var sideHint = $('<div>').addClass(CLASS.HINT).html(hint);
     sideBody.append(sideValue).append(sideHint);
 
-    var sideFooter = $('<div>').addClass(FOOTER_CLASS).html(
+    var sideFooter = $('<div>').addClass(CLASS.FOOT).html(
       evaluatePossibleCallback(settings[type + 'Footer'], value, hint));
     
     side.append(sideHeader).append(sideBody).append(sideFooter);
@@ -91,8 +104,8 @@
   }
   
   function turnCard(container) {
-    container.find('.' + FRONT_CLASS).toggle();
-    container.find('.' + BACK_CLASS).toggle();
+    container.find('.' + CLASS.FRONT).toggle();
+    container.find('.' + CLASS.BACK).toggle();
     return container;
   }
  
