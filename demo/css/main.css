@@ -1,13 +1,14 @@
-body {
-  background-color: #e27a3f;
-  color: #334d5c;
-  /*
+/* Color Theme
   334d5c
   45b29d
   efC94c
   e27a3f
   df5a49
-  */
+*/
+
+body {
+  background-color: #e27a3f;
+  color: #334d5c;
 }
 
 .flashcardContainer {
@@ -20,25 +21,6 @@ body {
   background-color: #fff;
   border: 0.1em solid #777;
   box-shadow: 0 0.2em 1em 0 #777;
-}
-
-.flashcardValue, .flashcardHint {
-  text-align: center;
-}
-
-.flashcardBody {
-  padding: 0.5em;
-  margin: 2em 0;
-}
-
-.flashcardValue {
-  padding-bottom: 0.5em;
-  font-weight: bold;
-}
-
-.flashcardHint {
-  padding-top: 0.5em;
-  font-style: italic;
 }
 
 .flashcardHead, .flashcardFoot {

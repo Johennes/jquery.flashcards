@@ -9,3 +9,22 @@
   height: 100%;
   margin: 0 auto;
 }
+
+.flashcardValue, .flashcardHint {
+  text-align: center;
+}
+
+.flashcardValue {
+  padding-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.flashcardHint {
+  padding-top: 0.5em;
+  font-style: italic;
+}
+
+.flashcardBody {
+  padding: 0.5em;
+  margin: 2em 0;
+}
