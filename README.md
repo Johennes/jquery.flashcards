@@ -3,7 +3,7 @@ jquery.flashcards
 
 A jQuery plugin to display, flip and switch flashcards
 
-Try the demo: http://htmlpreview.github.io/?https://github.com/Johennes/jquery.flashcards/blob/master/demo/index.html
+Try the demo: [click](http://htmlpreview.github.io/?https://github.com/Johennes/jquery.flashcards/blob/master/demo/index.html)
 
 ###Initialization
 
