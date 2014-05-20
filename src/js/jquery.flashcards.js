@@ -35,8 +35,16 @@
   };
   
   function initialize(container, settings) {
+    var defaultsideMapping = {
+      frontValue: 'frontValue',
+      frontHint:  'frontHint',
+      backValue:  'backValue',
+      backHint:   'backHint'
+    };
+    
     container.data('settings', $.extend({
       questionSide:  SIDE.FRONT,
+      sideMapping:       defaultsideMapping,
       headGenerator: function(side, value, hint) { return '' },
       footGenerator: function(side, value, hint) { return '' }
     }, settings));
@@ -62,9 +70,14 @@
       backValue:  '',
       backHint:   ''
     }, data);
+    
+    var frontValue = (settings.sideMapping.frontValue) ? cardData[settings.sideMapping.frontValue] : null;
+    var frontHint = (settings.sideMapping.frontHint) ? cardData[settings.sideMapping.frontHint] : null;
+    var backValue = (settings.sideMapping.backValue) ? cardData[settings.sideMapping.backValue] : null;
+    var backHint = (settings.sideMapping.backHint) ? cardData[settings.sideMapping.backHint] : null;
 
-    var front = createSide(settings, SIDE.FRONT, cardData.frontValue, cardData.frontHint);
-    var back = createSide(settings, SIDE.BACK, cardData.backValue, cardData.backHint);
+    var front = createSide(settings, SIDE.FRONT, frontValue, frontHint);
+    var back = createSide(settings, SIDE.BACK, backValue, backHint);
     var card = $('<div>').addClass(CLASS.CARD);
     card.append(front).append(back);
     
@@ -91,8 +104,12 @@
     
     var sideBody = $('<div>').addClass(CLASS.BODY);
     var sideValue = $('<div>').addClass(CLASS.VALUE).html(value);
-    var sideHint = $('<div>').addClass(CLASS.HINT).html(hint);
-    sideBody.append(sideValue).append(sideHint);
+    sideBody.append(sideValue);
+    
+    if (hint !== null && hint !== undefined && hint.length > 0) {
+      var sideHint = $('<div>').addClass(CLASS.HINT).html(hint);
+      sideBody.append(sideHint);
+    }
 
     var sideFooter = $('<div>').addClass(CLASS.FOOT).html(
       settings.footGenerator(type, value, hint));
