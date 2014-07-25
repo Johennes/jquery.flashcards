@@ -5,7 +5,10 @@ A jQuery plugin to display, flip and switch flashcards
 
 Check out the demo: [click](http://htmlpreview.github.io/?https://github.com/Johennes/jquery.flashcards/blob/master/demo/index.html)
 
-###Initialization
+### Initialization
+
+To initialize the plugin, call the `flashcards` functions with a
+settings object on the desired container.
 
 ``` javascript
 $('#container').flashcards({
@@ -24,3 +27,18 @@ the  question and is displayed first for any new card
 generating the text to be displayed in the card's head
 * `footGenerator = function(side, value, hint)` - function for
 generating the text to be displayed in the card's foot
+
+### Switching Cards
+
+To display a new falshcard, select the container element and invoke the
+`flashcards` injecting the command `'switch-card'` and the card's
+JSON data.
+
+``` javascript
+$('#container').flashcards('switch-card', {
+  frontValue: ...,
+  frontHint:  ...,
+  backValue:  ...,
+  backHint:   ...
+});
+```
