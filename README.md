@@ -1,6 +1,8 @@
 jquery.flashcards
 =================
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A jQuery plugin to display, flip and switch flashcards
 
 Check out the demo: [click](http://htmlpreview.github.io/?https://github.com/Johennes/jquery.flashcards/blob/master/demo/index.html)
