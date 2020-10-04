@@ -1,8 +1,6 @@
 jquery.flashcards
 =================
 
-*Mirrors: [GitHub] ~ [GitLab]*
-
 A jQuery plugin to display, flip and switch flashcards
 
 Check out the demo: [click](http://htmlpreview.github.io/?https://github.com/Johennes/jquery.flashcards/blob/master/demo/index.html)
@@ -54,6 +52,3 @@ parameter `'turn-card'`.
 ``` javascript
 $('#container').flashcards('turn-card');
 ```
-
-[GitHub]: https://github.com/Johennes/jquery.flashcards
-[GitLab]: https://gitlab.com/cherrypicker/jquery-flashcards
